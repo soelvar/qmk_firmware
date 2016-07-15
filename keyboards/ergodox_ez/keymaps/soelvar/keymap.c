@@ -1,4 +1,4 @@
-#include "ergodox_ez.h"
+#include "ergodox_ez.h"
 #include "debug.h"
 #include "action_layer.h"
 
@@ -13,20 +13,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   Esc  |  1   |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   10 | Backsp |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  |   E  |   R  |   T  |      |           |      |   Y  |   U  |   I  |   O  |   P  |   Del  |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | Tab    |   Q  |   W  |   E  |   R  |   T  |      |           |      |   Y  |   U  |   I  |   O  |   P  |   '"   |
+ * |--------+------+------+------+------+------|  -/_ |           | =/+  |------+------+------+------+------+--------|
  * | CAPS_L |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L2| Enter  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  | ~L1  |           | ~L1  |   N  |   M  |   Up |   ,  |  .   |RSft/Ins |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Ctrl |  '"  |   \  |   /  | L_Alt|                                       | Left | Down | Right| Home | End  |
+ *   | Ctrl | '/~  | \/|  | //?  | L_Alt|                                       | Left | Down | Right| Home | End  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
+ *                                        |      | PgUp |       |KC_INS|      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      | PgDn |       |KC_DELT|     |     |
  *                                 | Space| ~L3  |------|       |------|  ~L3 |Space |
- *                                 |      |      | PgDn |       | PgUp |      |      |
+ *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -34,22 +34,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = KEYMAP(  // layer 0 : default
 	// left hand
 	KC_ESC,         KC_1,   KC_2,   KC_3,   KC_4,    KC_5,    KC_NO,
-	KC_TAB,         KC_Q,   KC_W,   KC_E,   KC_R,    KC_T,    KC_NO,
+	KC_TAB,         KC_Q,   KC_W,   KC_E,   KC_R,    KC_T,    KC_MINS,
 	KC_CAPS,        KC_A,   KC_S,   KC_D,   KC_F,    KC_G,
 	KC_LSFT,        KC_Z,   KC_X,   KC_C,   KC_V,    KC_B,    KC_FN1,
-	KC_LCTL,        KC_QUOT,KC_BSLS,KC_SLSH,KC_LALT,
-													KC_NO,   KC_NO,
-															 KC_NO,
-										   KC_SPC,  OSL(3),  KC_PGDN,
+	KC_LCTL,        KC_GRV, KC_BSLS,KC_SLSH,KC_LALT,
+													KC_NO,   KC_PGUP,
+															 KC_PGDN,
+										   KC_SPC,  OSL(3),  KC_NO,
 	// right hand
 		 KC_NO,        KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC,
-		 KC_NO,  KC_Y, KC_U,   KC_I,   KC_O,    KC_P,             KC_DELT,
+		 KC_EQL,  KC_Y, KC_U,   KC_I,   KC_O,    KC_P,             KC_QUOT,
 				 KC_H, KC_J,   KC_K,   KC_L,    LT(MDIA, KC_SCLN),KC_ENT,
-		 KC_FN1, KC_N, KC_M,   KC_UP,  KC_COMM, KC_DOT,           SFT_T(KC_INS),
+		 KC_FN1, KC_N, KC_M,   KC_UP,  KC_COMM, KC_DOT,           KC_RSFT,
 					   KC_LEFT,KC_DOWN,KC_RGHT, KC_HOME,  KC_END,
-		 KC_NO,  KC_NO,
-		 KC_NO,
-		 KC_PGUP,OSL(3), KC_SPC
+		 KC_INS, KC_NO,
+		 KC_DELT,
+		 KC_NO,  OSL(3), KC_SPC
 ),
 /* Keymap 1: Symbol Layer
  *
